@@ -1,4 +1,385 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h1>GW TEST</h1>
-{% endblock %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jellys Store - Головна</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Mulish:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="bg-white text-[#2E2E2E]">
+
+    <header>
+        <!-- Top Navigation -->
+        <div class="border-b border-[#A6A6A6] hidden md:block">
+            <div class="mx-auto px-4 sm:px-6 lg:px-[6.25rem] flex h-auto py-[0.1875rem] lg:h-[0.96875rem] lg:py-0 justify-start items-center gap-4 sm:gap-6 text-xs sm:text-[0.9375rem] text-[#333333]">
+                <a href="#" class="flex-shrink-0 text-center hover:underline transition whitespace-nowrap">Про нас</a>
+                <a href="#" class="flex-shrink-0 text-center hover:underline transition whitespace-nowrap">Відгуки</a>
+                <a href="#" class="flex-shrink-0 text-center hover:underline transition whitespace-nowrap">Оплата та доставка</a>
+                <a href="#" class="flex-shrink-0 text-center hover:underline transition whitespace-nowrap">Обмін та повернення</a>
+                <a href="#" class="flex-shrink-0 text-center hover:underline transition whitespace-nowrap">Блог</a>
+            </div>
+        </div>
+
+        <!-- Middle Bar -->
+        <div class="border-b border-[#A6A6A6]">
+            <div class="w-full px-4 sm:px-6 lg:px-0 py-2 sm:py-[0.667rem] lg:h-[4.125rem] lg:py-0 flex justify-between items-center lg:justify-center lg:relative gap-4 lg:gap-0">
+                <div class="hidden md:flex items-center gap-2 text-xs sm:text-[0.875rem] text-[#2E2E2E] lg:absolute lg:left-[6.25rem]">
+                    <img src="{% static 'images/telephone.png' %}" alt="telephone" class="w-5 sm:w-[1.1875rem] h-6 sm:h-[1.5rem] object-contain" />
+                    <span class="leading-none">UA / <span class="text-[#7A7A7A]">EN</span></span>
+                </div>
+                <div class="text-3xl sm:text-4xl lg:text-[3rem] font-light tracking-normal leading-none">LOGO</div>
+                <div class="flex items-center gap-2 sm:gap-4 lg:gap-[1.125rem] lg:absolute lg:right-[6.25rem]">
+                    <div class="relative lg:flex-none w-44 sm:w-[15.625rem] lg:w-[18.5rem] h-9 sm:h-10 lg:h-[2.375rem] bg-[#F4F4F4]">
+                        <input id="product-search-input" type="text" placeholder="Пошук..." class="w-full h-full bg-transparent pl-3 sm:pl-6 pr-10 sm:pr-14 text-xs sm:text-[0.9375rem] text-[#A0AEC0] focus:outline-none" />
+                        <button id="product-search-btn" type="button" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex items-center justify-center">
+                            <img src="{% static 'images/search.png' %}" alt="search" class="w-5 sm:w-6 h-5 sm:h-6 object-contain" />
+                        </button>
+                        <div id="search-results" class="absolute hidden top-full mt-1 w-full bg-white border border-gray-200 rounded shadow-lg z-50 max-h-64 overflow-auto"></div>
+                    </div>
+                    <div class="flex gap-3 sm:gap-4 lg:gap-[1.125rem] items-center">
+                        <button type="button" class="w-5 sm:w-6 lg:w-[1.375rem] h-5 sm:h-6 lg:h-[1.375rem] flex items-center justify-center"><img src="{% static 'images/heart.png' %}" alt="heart" class="w-full h-full object-contain" /></button>
+                        <button type="button" class="w-5 sm:w-5 lg:w-[1.125rem] h-5 sm:h-6 lg:h-[1.375rem] flex items-center justify-center"><img src="{% static 'images/human_.png' %}" alt="human" class="w-full h-full object-contain" /></button>
+                        <button type="button" class="w-5 sm:w-5 lg:w-[1.25rem] h-5 sm:h-6 lg:h-[1.375rem] flex items-center justify-center"><img src="{% static 'images/package.png' %}" alt="package" class="w-full h-full object-contain" /></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="border-b border-[#A6A6A6]">
+            <nav class="mx-auto px-4 sm:px-6 lg:px-[6.25rem] py-0.5 lg:py-0 lg:h-[0.8125rem] flex justify-center items-center gap-3 sm:gap-4 lg:gap-[1.875rem] overflow-x-auto">
+                <a href="#" class="text-xs sm:text-[0.875rem] font-normal uppercase text-[#2E2E2E] leading-[1.1875rem] hover:text-gray-500 transition flex-shrink-0">menu</a>
+                <a href="#" class="text-xs sm:text-[0.875rem] font-normal uppercase text-[#2E2E2E] leading-[1.1875rem] hover:text-gray-500 transition flex-shrink-0">menu</a>
+                <a href="#" class="text-xs sm:text-[0.875rem] font-normal uppercase text-[#2E2E2E] leading-[1.1875rem] hover:text-gray-500 transition flex-shrink-0">menu</a>
+                <a href="#" class="text-xs sm:text-[0.875rem] font-normal uppercase text-[#2E2E2E] leading-[1.1875rem] hover:text-gray-500 transition flex-shrink-0">menu</a>
+                <a href="#" class="text-xs sm:text-[0.875rem] font-normal uppercase text-[#2E2E2E] leading-[1.1875rem] hover:text-gray-500 transition flex-shrink-0">menu</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero-slider" class="relative w-full h-80 sm:h-96 md:h-[500px] lg:h-[623px] bg-[#D9D9D9] bg-cover bg-center flex items-center justify-between px-4 sm:px-6 lg:px-10" style="background-image: url('{{ main_slider.0.image }}');">
+        <button id="hero-prev" type="button" class="text-2xl sm:text-3xl lg:text-4xl font-thin opacity-50 hover:opacity-100 z-10">&lt;</button>
+        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+            <h2 id="hero-title" class="text-white text-2xl sm:text-3xl lg:text-4xl font-light tracking-widest uppercase px-4 text-center">{{ main_slider.0.name }}</h2>
+        </div>
+        <button id="hero-next" type="button" class="text-2xl sm:text-3xl lg:text-4xl font-thin opacity-50 hover:opacity-100 z-10">&gt;</button>
+    </section>
+
+    <main class="mx-auto px-4 sm:px-6 lg:px-[100px] py-8 sm:py-12 lg:py-16">
+        <div class="max-w-[1010px] mx-auto flex justify-center gap-4 sm:gap-8 lg:gap-[137px] mb-8 sm:mb-10 lg:mb-[57px] text-base sm:text-lg lg:text-[20px] overflow-x-auto">
+            <button class="text-[#A6A6A6] font-normal hover:text-black flex-shrink-0">Новинки</button>
+            <button class="text-black font-bold underline decoration-1 underline-offset-4 flex-shrink-0">Знижки</button>
+            <button class="text-[#A6A6A6] font-normal hover:text-black flex-shrink-0">Топ продажу</button>
+        </div>
+
+        <div class="max-w-[1010px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-x-[30px] lg:gap-y-[30px] mb-8 sm:mb-12 lg:mb-[40px]">
+            {% for product in discount_products|slice:":8" %}
+            <div class="h-auto lg:h-[360px]">
+                <div class="aspect-[230/270] bg-[#D9D9D9] flex flex-col items-center justify-center mb-2 sm:mb-3 lg:mb-[10px] relative group overflow-hidden">
+                    <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-cover" />
+                </div>
+                <div class="flex items-start justify-between mb-1 sm:mb-2 lg:mb-[9px]">
+                    <h4 class="flex-1 text-xs sm:text-sm lg:text-[14px] leading-4 sm:leading-5 lg:leading-[16.91px] text-[#545454] line-clamp-2">{{ product.name }}</h4>
+                    <button type="button" class="favorite-toggle w-5 sm:w-6 lg:w-[25px] h-5 sm:h-5 lg:h-[21px] flex items-center justify-center flex-shrink-0 ml-1" data-product-id="{{ product.id }}" aria-pressed="false">
+                        <img src="{% static 'images/heart.png' %}" alt="heart" class="favorite-icon w-full h-full object-contain opacity-40 transition-opacity" />
+                    </button>
+                </div>
+                <p class="text-[10px] sm:text-xs lg:text-[10px] leading-3 sm:leading-4 lg:leading-[12px] text-[#747474] mb-1 sm:mb-2 lg:mb-[13px] uppercase">{% if product.available %}В наявності{% else %}Немає в наявності{% endif %}</p>
+                <div class="flex justify-between items-start flex-col sm:flex-row lg:flex-col">
+                    <div class="flex gap-1 sm:gap-2 lg:gap-[8px] items-baseline flex-wrap">
+                        <span class="text-xs sm:text-sm lg:text-[14px] leading-4 sm:leading-5 lg:leading-[16.94px] text-[#545454]">{{ product.price }} UAH</span>
+                        {% if product.price_without_discount > product.price %}
+                        <span class="text-xs sm:text-sm lg:text-[14px] leading-4 sm:leading-5 lg:leading-[16.94px] text-[#9A9A9A] line-through">{{ product.price_without_discount }} UAH</span>
+                        {% endif %}
+                    </div>
+                    <div class="flex gap-0.5 sm:gap-1 lg:gap-[3px] items-start pt-0 sm:pt-1 lg:pt-[2px] mt-1 sm:mt-1 lg:mt-0">
+                        {% for i in "12345" %}
+                            <img src="{% static 'images/star.png' %}" alt="star" class="w-3 sm:w-3 lg:w-[12px] h-3 sm:h-3 lg:h-[12px] object-contain" />
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="col-span-1 sm:col-span-2 lg:col-span-4 text-center text-gray-500">Немає товарів зі знижкою</p>
+            {% endfor %}
+        </div>
+
+        <div class="flex justify-center mb-12 sm:mb-16 lg:mb-20">
+            <button class="px-6 sm:px-8 lg:px-[21px] py-2 sm:py-3 lg:py-[7px] border border-black/50 rounded-[3px] text-xs sm:text-sm lg:text-[14px] font-light hover:bg-black hover:text-white transition w-full sm:w-auto max-w-[295px]">Переглянути всі знижки</button>
+        </div>
+
+        <div class="text-center mb-12 sm:mb-16 lg:mb-24 px-4">
+            <h2 class="text-xl sm:text-2xl lg:text-2xl font-mulish font-light uppercase mb-4 sm:mb-6">Lorem ipsum dolor sit amet consectetur</h2>
+            <p class="text-sm sm:text-base lg:text-[15px] font-mulish leading-relaxed text-justify max-w-[1030px] mx-auto text-[#000000]">
+                Lorem ipsum dolor sit amet consectetur. Elementum massa pellentesque dui enim fames sed sem. Vivamus lobortis enim semper nisl. Non accumsan cursus dictum ipsum elementum nec. Quis faucibus lorem est massa bibendum fermentum enim vitae sed. Aliquet tincidunt est aliquam viverra est sagittis hac dolor. 
+                <br><br>
+                Quis et sed dui suspendisse tincidunt pharetra ipsum. Ac mi posuere porttitor sit sed lectus dignissim massa quam. Gravida in gravida et id tincidunt. Viverra lectus venenatis montes non nibh est purus.
+            </p>
+        </div>
+
+        <div class="space-y-8 sm:space-y-12 lg:space-y-20">
+            <div class="flex flex-col lg:flex-row gap-4 sm:gap-6 lg:gap-8 items-start">
+                <div class="w-full lg:w-[606px] aspect-video lg:h-[500px] bg-[#D9D9D9] bg-cover bg-center text-white relative" style="background-image: url('{{ promo_banners.0.image }}');">
+                    <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-light mb-1 sm:mb-2">{{ promo_banners.0.title }}</span>
+                        <span class="text-lg sm:text-xl lg:text-2xl opacity-80">{{ promo_banners.0.subtitle }}</span>
+                    </div>
+                </div>
+                <div class="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    {% for product in banner_products|slice:"0:2" %}
+                    <div class="w-full">
+                        <div class="aspect-[230/270] bg-[#D9D9D9] flex flex-col items-center justify-center mb-2 sm:mb-4 relative group">
+                            <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-xs sm:text-sm text-[#545454] line-clamp-1">{{ product.name }}</h4>
+                            <button type="button" class="favorite-toggle w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0 ml-1" data-product-id="{{ product.id }}" aria-pressed="false">
+                                <img src="{% static 'images/heart.png' %}" alt="heart" class="favorite-icon w-full h-full object-contain opacity-40 transition-opacity" />
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-[#747474] mb-1 sm:mb-2 uppercase">{% if product.available %}В наявності{% else %}Немає в наявності{% endif %}</p>
+                        <div class="flex justify-between items-center flex-wrap gap-1">
+                            <div class="flex gap-1 sm:gap-2 items-baseline">
+                                <span class="text-xs sm:text-sm font-semibold">{{ product.price }} UAH</span>
+                                {% if product.price_without_discount > product.price %}<span class="text-xs sm:text-sm text-[#9A9A9A] line-through">{{ product.price_without_discount }} UAH</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <button class="col-span-1 sm:col-span-2 py-2 border border-black/50 uppercase text-xs sm:text-sm tracking-wider">Перейти до категорії</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col-reverse lg:flex-row-reverse gap-4 sm:gap-6 lg:gap-8 items-start">
+                <div class="w-full lg:w-[606px] aspect-video lg:h-[500px] bg-[#D9D9D9] bg-cover bg-center text-white relative" style="background-image: url('{{ promo_banners.1.image|default:promo_banners.0.image }}');">
+                    <div class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center">
+                        <span class="text-2xl sm:text-3xl lg:text-4xl font-light mb-1 sm:mb-2">{{ promo_banners.1.title|default:promo_banners.0.title }}</span>
+                        <span class="text-lg sm:text-xl lg:text-2xl opacity-80">{{ promo_banners.1.subtitle|default:promo_banners.0.subtitle }}</span>
+                    </div>
+                </div>
+                <div class="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    {% for product in banner_products|slice:"2:4" %}
+                    <div class="w-full">
+                        <div class="aspect-[230/270] bg-[#D9D9D9] flex flex-col items-center justify-center mb-2 sm:mb-4 relative group">
+                            <img src="{{ product.image }}" alt="{{ product.name }}" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="flex items-center justify-between mb-1">
+                            <h4 class="text-xs sm:text-sm text-[#545454] line-clamp-1">{{ product.name }}</h4>
+                            <button type="button" class="favorite-toggle w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center flex-shrink-0 ml-1" data-product-id="{{ product.id }}" aria-pressed="false">
+                                <img src="{% static 'images/heart.png' %}" alt="heart" class="favorite-icon w-full h-full object-contain opacity-40 transition-opacity" />
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-[#747474] mb-1 sm:mb-2 uppercase">{% if product.available %}В наявності{% else %}Немає в наявності{% endif %}</p>
+                        <div class="flex justify-between items-center flex-wrap gap-1">
+                            <div class="flex gap-1 sm:gap-2 items-baseline">
+                                <span class="text-xs sm:text-sm font-semibold">{{ product.price }} UAH</span>
+                                {% if product.price_without_discount > product.price %}<span class="text-xs sm:text-sm text-[#9A9A9A] line-through">{{ product.price_without_discount }} UAH</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <button class="col-span-1 sm:col-span-2 py-2 border border-black/50 uppercase text-xs sm:text-sm tracking-wider">Перейти до категорії</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#F5F5F5]">
+        <div class="mx-auto px-4 sm:px-6 lg:px-0 py-8 sm:py-10 lg:py-10 flex flex-col lg:flex-row lg:justify-between lg:items-start" style="padding-left: 0; padding-right: 0;">
+            <!-- Logo and socials on the left -->
+            <div class="flex flex-col gap-4 sm:gap-8 mb-8 lg:mb-0 lg:ml-[203px]">
+                <div class="text-3xl sm:text-4xl font-normal" style="font-family: 'Open Sans'">LOGO</div>
+                <div class="flex gap-3 sm:gap-5">
+                    <img src="{% static 'images/facebook.png' %}" alt="facebook" class="w-5 sm:w-6 h-5 sm:h-6 object-contain" />
+                    <img src="{% static 'images/instagram.png' %}" alt="instagram" class="w-5 sm:w-6 h-5 sm:h-6 object-contain" />
+                    <img src="{% static 'images/tiktok.png' %}" alt="tiktok" class="w-5 sm:w-6 h-5 sm:h-6 object-contain" />
+                </div>
+            </div>
+
+            <!-- Каталог and Контакти sections on the right -->
+            <div class="grid grid-cols-2 lg:flex lg:gap-12 gap-6 sm:gap-8 lg:gap-12 lg:mr-[100px] w-full lg:w-auto">
+                <!-- Каталог Section -->
+                <div class="flex flex-col gap-3 sm:gap-5">
+                    <h4 class="text-black text-sm sm:text-base font-normal" style="font-family: 'Open Sans';">Каталог</h4>
+                    <div class="flex flex-col gap-2 sm:gap-2.5">
+                        <div class="text-[#676767] text-xs sm:text-sm font-normal" style="font-family: 'Open Sans';">Menu</div>
+                        <div class="text-[#676767] text-xs sm:text-sm font-normal" style="font-family: 'Open Sans';">Menu</div>
+                        <div class="text-[#676767] text-xs sm:text-sm font-normal" style="font-family: 'Open Sans';">Menu</div>
+                        <div class="text-[#676767] text-xs sm:text-sm font-normal" style="font-family: 'Open Sans';">Menu</div>
+                        <div class="text-[#676767] text-xs sm:text-sm font-normal" style="font-family: 'Open Sans';">Menu</div>
+                    </div>
+                </div>
+
+                <!-- Контакти Section -->
+                <div class="flex flex-col gap-3 sm:gap-5">
+                    <h4 class="text-black text-sm sm:text-base font-normal" style="font-family: 'Roboto';">Контакти</h4>
+                    <div class="flex flex-col gap-0 text-xs sm:text-sm">
+                        <div class="text-[#676767] text-xs font-normal uppercase" style="font-family: 'Roboto'; opacity: 0.6;">Телефон</div>
+                        <div class="text-[#676767] font-normal mb-3 sm:mb-5" style="font-family: 'Roboto';">+38 (011) 011 01 01</div>
+                        
+                        <div class="text-[#676767] text-xs font-normal uppercase" style="font-family: 'Roboto'; opacity: 0.6;">Email</div>
+                        <div class="text-[#676767] font-normal mb-3 sm:mb-5" style="font-family: 'Roboto';">jellys@jellys.ua</div>
+                        
+                        <div class="text-[#676767] text-xs font-normal uppercase" style="font-family: 'Roboto'; opacity: 0.6;">Адреса</div>
+                        <div class="text-[#676767] font-normal" style="font-family: 'Roboto';">Kyiv. white bat street. 25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bg-[#2C2C2C] h-9 flex items-center justify-center">
+            <div class="text-white text-xs sm:text-sm lg:text-base font-normal px-4 text-center" style="font-family: 'Open Sans';">Розробка сайту  Golden Web digital</div>
+        </div>
+    </footer>
+
+    <script id="main-slider-data" type="application/json">{{ main_slider_json|safe }}</script>
+
+    <script>
+        (function(){
+            const heroSlider = document.getElementById('hero-slider');
+            const heroTitle = document.getElementById('hero-title');
+            const heroPrev = document.getElementById('hero-prev');
+            const heroNext = document.getElementById('hero-next');
+            const mainSliderData = document.getElementById('main-slider-data');
+            const mainSlider = mainSliderData ? JSON.parse(mainSliderData.textContent) : [];
+            let currentSlideIndex = 0;
+
+            function renderHeroSlide(index) {
+                const slide = mainSlider[index];
+                if (!slide || !heroSlider || !heroTitle) {
+                    return;
+                }
+                heroSlider.style.backgroundImage = `url('${slide.image}')`;
+                heroTitle.textContent = slide.name;
+            }
+
+            if (heroPrev && heroNext && mainSlider.length > 1) {
+                heroPrev.addEventListener('click', () => {
+                    currentSlideIndex = (currentSlideIndex - 1 + mainSlider.length) % mainSlider.length;
+                    renderHeroSlide(currentSlideIndex);
+                });
+
+                heroNext.addEventListener('click', () => {
+                    currentSlideIndex = (currentSlideIndex + 1) % mainSlider.length;
+                    renderHeroSlide(currentSlideIndex);
+                });
+            }
+
+            const FAVORITES_STORAGE_KEY = 'favoriteProductIds';
+            const favoriteButtons = document.querySelectorAll('.favorite-toggle');
+
+            function getFavoriteIds() {
+                try {
+                    const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+                    const parsed = stored ? JSON.parse(stored) : [];
+                    if (!Array.isArray(parsed)) {
+                        return new Set();
+                    }
+                    return new Set(parsed.map(String));
+                } catch (error) {
+                    return new Set();
+                }
+            }
+
+            function saveFavoriteIds(favoriteIds) {
+                localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(Array.from(favoriteIds)));
+            }
+
+            function applyFavoriteState(button, isActive) {
+                const icon = button.querySelector('.favorite-icon');
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                if (!icon) {
+                    return;
+                }
+                icon.classList.toggle('opacity-40', !isActive);
+                icon.classList.toggle('opacity-100', isActive);
+            }
+
+            const favoriteIds = getFavoriteIds();
+
+            favoriteButtons.forEach((button) => {
+                const productId = button.dataset.productId;
+                if (!productId) {
+                    return;
+                }
+
+                applyFavoriteState(button, favoriteIds.has(productId));
+
+                button.addEventListener('click', () => {
+                    const isActive = favoriteIds.has(productId);
+                    if (isActive) {
+                        favoriteIds.delete(productId);
+                    } else {
+                        favoriteIds.add(productId);
+                    }
+
+                    document.querySelectorAll(`.favorite-toggle[data-product-id="${productId}"]`).forEach((itemButton) => {
+                        applyFavoriteState(itemButton, !isActive);
+                    });
+
+                    saveFavoriteIds(favoriteIds);
+                });
+            });
+
+            const searchInput = document.getElementById('product-search-input');
+            const resultsBox = document.getElementById('search-results');
+            const btn = document.getElementById('product-search-btn');
+            let timeoutId = null;
+
+            function renderResults(items){
+                if(!items.length){
+                    resultsBox.innerHTML = '<div class="px-3 py-2 text-sm text-gray-500">Нічого не знайдено</div>';
+                    resultsBox.classList.remove('hidden');
+                    return;
+                }
+                resultsBox.innerHTML = items.map(item => `
+                    <a href="#" class="block px-3 py-2 text-sm hover:bg-gray-100 border-b border-gray-200 text-gray-700">
+                        <div class="font-semibold">${item.name}</div>
+                        <div class="text-xs text-gray-500">${item.price} UAH</div>
+                    </a>
+                `).join('');
+                resultsBox.classList.remove('hidden');
+            }
+
+            function doSearch(query){
+                if(query.length < 3){
+                    resultsBox.classList.add('hidden');
+                    return;
+                }
+                fetch(`/search/?query=${encodeURIComponent(query)}`)
+                    .then(resp => resp.json())
+                    .then(renderResults)
+                    .catch(()=>{
+                        resultsBox.innerHTML = '<div class="px-3 py-2 text-sm text-red-500">Помилка пошуку</div>';
+                        resultsBox.classList.remove('hidden');
+                    });
+            }
+
+            searchInput.addEventListener('input', () => {
+                const value = searchInput.value.trim();
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => doSearch(value), 400);
+            });
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const value = searchInput.value.trim();
+                doSearch(value);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!searchInput.contains(e.target) && !resultsBox.contains(e.target) && e.target !== btn) {
+                    resultsBox.classList.add('hidden');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
+

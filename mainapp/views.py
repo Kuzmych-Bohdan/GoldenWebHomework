@@ -1,6 +1,7 @@
 from unicodedata import category
 from django.http import JsonResponse
 from django.shortcuts import render
+import json
 
 main_slider = [
     {'id': 1, 'name': 'Main Slider 1', 'image': 'https://picsum.photos/600/500'},
@@ -59,7 +60,34 @@ products = [
 ]
 
 def index(request):
-    return render(request, 'index.html', {'products': products, 'categories': categories, 'main_slider': main_slider})
+    discount_products = [product for product in products if product['price_without_discount'] > product['price']]
+    banner_products = products[:4]
+    promo_banners = [
+        {
+            'title': main_slider[0]['name'],
+            'subtitle': '600x500',
+            'image': main_slider[0]['image'],
+        },
+        {
+            'title': main_slider[1]['name'] if len(main_slider) > 1 else main_slider[0]['name'],
+            'subtitle': '600x500',
+            'image': main_slider[1]['image'] if len(main_slider) > 1 else main_slider[0]['image'],
+        },
+    ]
+
+    return render(
+        request,
+        'index.html',
+        {
+            'products': products,
+            'categories': categories,
+            'main_slider': main_slider,
+            'main_slider_json': json.dumps(main_slider),
+            'discount_products': discount_products,
+            'banner_products': banner_products,
+            'promo_banners': promo_banners,
+        },
+    )
 
 def search(request):
     query = request.GET.get('query', '').strip().lower()
